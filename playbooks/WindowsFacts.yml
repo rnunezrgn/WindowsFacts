@@ -2,21 +2,21 @@
 - name: Windows Facts report
   hosts: windows
   # Set the following variables in Ansible Controller template Survey#
-  vars:
-    Windows_User: ''
-    Windows_Password_Prompt: ''
+#  vars:
+#    Windows_User: ''
+#    Windows_Password: ''
 
   tasks:
     - name: Register User Name #
       set_fact:
-        windows_user: "{{ Windows_User_Prompt }}"        
+        windows_user: "{{ ansible_user }}"        
       no_log: true
       delegate_to: localhost
       run_once: true 
 
     - name: Register Password #
       set_fact:        
-        windows_password: "{{ Windows_Password_Prompt }}"
+        windows_password: "{{ ansible_password }}"
       no_log: true
       delegate_to: localhost
       run_once: true   
