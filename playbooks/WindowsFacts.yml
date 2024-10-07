@@ -1,10 +1,7 @@
 ---
 - name: Windows Facts report
   hosts: windows
-  # Set the following variables in Ansible Controller template Survey#
-#  vars:
-#    Windows_User: ''
-#    Windows_Password: ''
+  # Task will use the Ansible Controller template credential to pass device's uid and password#
 
   tasks:
     - name: Register User Name #
@@ -175,25 +172,25 @@
       delegate_to: localhost
 
 # "Git Add / Commit / Push#"
-- hosts: localhost
-  vars_prompt:
-    - name: git_commit_prompt
-      prompt: "Enter Git Commit Message"
-      private: no
-      tags: ['config','documentation']
-  tasks: 
-    - set_fact:
-        git_message: "{{git_commit_prompt}}"
-      tags: ['config','documentation']
-    - name: Git - Add
-      shell: "git add ../*"
-      register: gitadd
-      tags: ['config','documentation']
-    - name: Git - commit
-      shell: git commit -m "{{ git_message }}"
-      register: gitcommit
-      tags: ['config','documentation']
-    - name: Git - push
-      shell: git push 
-      register: gitpush
-      tags: ['config','documentation']
+#- hosts: localhost
+#  vars_prompt:
+#    - name: git_commit_prompt
+#      prompt: "Enter Git Commit Message"
+#      private: no
+#      tags: ['config','documentation']
+#  tasks: 
+#    - set_fact:
+#        git_message: "{{git_commit_prompt}}"
+#      tags: ['config','documentation']
+#    - name: Git - Add
+#      shell: "git add ../*"
+#      register: gitadd
+#      tags: ['config','documentation']
+#    - name: Git - commit
+#      shell: git commit -m "{{ git_message }}"
+#      register: gitcommit
+#      tags: ['config','documentation']
+#    - name: Git - push
+#      shell: git push 
+#      register: gitpush
+#      tags: ['config','documentation']
